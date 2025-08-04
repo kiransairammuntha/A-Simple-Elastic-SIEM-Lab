@@ -28,3 +28,6 @@ The project involved configuring and utilizing Elastic SIEM to monitor and detec
 - Elastic Defend
 
 - Elastic Alerts
+
+  <img width="309" height="699" alt="SIEM" src="https://github.com/user-attachments/assets/26003a06-206a-45cc-a575-781dab9987a6" />
+
