@@ -43,7 +43,7 @@ Whether you're an aspiring security analyst, a penetration tester, or an IT prof
 - [🔍 Overview](#-overview)
 - [✨ Key Features](#-key-features)
 - [🏗️ Architecture](#️-architecture)
-- [🚀 What You'll Learn](#-what-youll-learn)
+- [🚀 Learnings](#-learnings)
 - [🎯 Use Cases](#-use-cases)
 - [💡 Lab Tasks](#-lab-tasks)
 - [📊 Creating Dashboards](#-creating-dashboards)
@@ -147,7 +147,7 @@ This project provides a comprehensive guide to setting up a **home lab for Elast
 
 ---
 
-## 🚀 What You'll Learn
+## 🚀 Learnings
 
 ### Security Monitoring Fundamentals
 | Concept | Description | Real-World Application |
@@ -159,11 +159,11 @@ This project provides a comprehensive guide to setting up a **home lab for Elast
 | **Dashboard Design** | Visualizing security metrics | Executive reporting |
 
 ### Hands-On Experience With
-- 🔍 **Threat Detection** — Identifying network scans, brute force attempts, and suspicious activity
-- 📊 **Log Analysis** — Parsing and understanding security event data
-- 🚨 **Alert Triage** — Prioritizing and investigating security alerts
-- 📈 **Metrics Tracking** — Monitoring security KPIs over time
-- 🔄 **Incident Workflow** — Following SOC procedures from detection to response
+- 🔍 **Threat Detection** - Identifying network scans, brute force attempts, and suspicious activity
+- 📊 **Log Analysis** - Parsing and understanding security event data
+- 🚨 **Alert Triage** - Prioritizing and investigating security alerts
+- 📈 **Metrics Tracking** - Monitoring security KPIs over time
+- 🔄 **Incident Workflow** - Following SOC procedures from detection to response
 
 ---
 
