@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt601c406b0b5af740/620577381692951393fdf8d6/elastic-logo-cluster.svg" alt="Elastic Logo" width="200">
+  <img src="https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt601c406b0b5af740/620577381692951393fdf8d6/elastic-logo-cluster.svg" alt="Elastic Logo" width="300">
 </p>
 
 <h1 align="center">🔍 Elastic SIEM Home Lab</h1>
@@ -43,7 +43,8 @@ Whether you're an aspiring security analyst, a penetration tester, or an IT prof
 - [🔍 Overview](#-overview)
 - [✨ Key Features](#-key-features)
 - [🏗️ Architecture](#️-architecture)
-- [🚀 Quick Start](#-quick-start)
+- [🚀 What You'll Learn](#-what-youll-learn)
+- [🎯 Use Cases](#-use-cases)
 - [💡 Lab Tasks](#-lab-tasks)
 - [📊 Creating Dashboards](#-creating-dashboards)
 - [🔔 Setting Up Alerts](#-setting-up-alerts)
@@ -146,55 +147,47 @@ This project provides a comprehensive guide to setting up a **home lab for Elast
 
 ---
 
-## 🚀 Quick Start
+## 🚀 What You'll Learn
 
-### Prerequisites
+### Security Monitoring Fundamentals
+| Concept | Description | Real-World Application |
+|---------|-------------|------------------------|
+| **Log Collection** | Gathering security events from endpoints | SOC Level 1 analyst daily tasks |
+| **Event Correlation** | Connecting related security events | Incident investigation |
+| **Query Writing** | KQL for searching security data | Threat hunting |
+| **Alert Creation** | Rule-based threat detection | Automated monitoring |
+| **Dashboard Design** | Visualizing security metrics | Executive reporting |
 
-| Requirement | Description |
-|-------------|-------------|
-| 💻 **Virtualization Software** | VirtualBox or VMware |
-| 🐧 **Kali Linux VM** | Download from [kali.org](https://www.kali.org/get-kali/#kali-virtual-machines) |
-| ☁️ **Elastic Cloud Account** | Free trial at [cloud.elastic.co](https://cloud.elastic.co/registration) |
-| 🌐 **Internet Connection** | Required for Elastic Cloud communication |
-| 🧠 **Basic Linux Knowledge** | Command line familiarity |
+### Hands-On Experience With
+- 🔍 **Threat Detection** — Identifying network scans, brute force attempts, and suspicious activity
+- 📊 **Log Analysis** — Parsing and understanding security event data
+- 🚨 **Alert Triage** — Prioritizing and investigating security alerts
+- 📈 **Metrics Tracking** — Monitoring security KPIs over time
+- 🔄 **Incident Workflow** — Following SOC procedures from detection to response
 
-### Installation Steps
+---
 
-**1️⃣ Set Up Elastic Cloud Account**
-```bash
-# Navigate to Elastic Cloud
-https://cloud.elastic.co/registration
+## 🎯 Use Cases
 
-# Create a deployment
-- Click "Create Deployment"
-- Select "Elasticsearch" as deployment type
-- Choose your region
-- Click "Create Deployment"
-```
+### 1. SOC Analyst Training
+**Scenario:** Preparing for a Security Operations Center role
+**Skills Gained:** Log analysis, alert triage, dashboard monitoring
+**Interview Value:** "I built a SIEM lab where I detected and analyzed network reconnaissance attacks"
 
-**2️⃣ Set Up Kali Linux VM**
-```bash
-# Download Kali Linux VM
-https://www.kali.org/get-kali/#kali-virtual-machines
+### 2. Threat Hunting Practice
+**Scenario:** Proactively searching for hidden threats
+**Skills Gained:** KQL query writing, event correlation, pattern recognition
+**Interview Value:** "I wrote custom detection queries to identify Nmap scans and authentication anomalies"
 
-# Default credentials
-Username: kali
-Password: kali
-```
+### 3. Incident Response Simulation
+**Scenario:** Responding to security alerts
+**Skills Gained:** Alert investigation, timeline analysis, documentation
+**Interview Value:** "I created alerting rules and practiced the full incident response workflow"
 
-**3️⃣ Install Elastic Agent on Kali**
-```bash
-# Navigate to Integrations in Elastic Cloud
-# Search for "Elastic Defend"
-# Copy the Linux installation command
-
-# Paste and run in Kali terminal
-curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/...
-sudo ./elastic-agent install ...
-
-# Verify installation
-sudo systemctl status elastic-agent.service
-```
+### 4. Security Tool Evaluation
+**Scenario:** Understanding enterprise SIEM capabilities
+**Skills Gained:** Elastic Stack architecture, Kibana visualization, agent deployment
+**Interview Value:** "I have hands-on experience with Elastic SIEM used by Fortune 500 companies"
 
 ---
 
@@ -202,47 +195,30 @@ sudo systemctl status elastic-agent.service
 
 ### Task 1: Generate Security Events with Nmap
 
-```bash
-# Basic scan of local machine
-sudo nmap <vm-ip>
+Run various network scans to create realistic security events:
 
-# SYN scan (stealth scan)
-sudo nmap -sS <target-ip>
-
-# TCP connect scan
-sudo nmap -sT <target-ip>
-
-# Full port scan
-sudo nmap -p- <target-ip>
-
-# Aggressive scan with OS detection
-sudo nmap -A <target-ip>
-```
+| Scan Type | Command | What It Simulates |
+|-----------|---------|-------------------|
+| Basic Scan | `nmap <ip>` | Host discovery |
+| Stealth Scan | `nmap -sS <ip>` | Attacker reconnaissance |
+| Full Port Scan | `nmap -p- <ip>` | Comprehensive enumeration |
+| Aggressive Scan | `nmap -A <ip>` | OS/service detection |
 
 ### Task 2: Query Security Events in SIEM
 
-```kql
-# Search for Nmap scan events
-event.action: "nmap_scan"
+| Query | Purpose | SOC Use Case |
+|-------|---------|--------------|
+| `event.action: "nmap_scan"` | Find scan activity | Detect reconnaissance |
+| `process.args: "sudo"` | Track privilege use | Monitor admin actions |
+| `event.action: "authentication_failure"` | Find failed logins | Detect brute force |
 
-# Search for sudo commands
-process.args: "sudo"
+### Task 3: Create Detection Rules
 
-# Search for authentication failures
-event.action: "authentication_failure"
-
-# Search for SSH login attempts
-event.category: "authentication" AND process.name: "sshd"
-```
-
-### Task 3: Analyze Results
-
-| Event Type | What It Indicates | Severity |
-|------------|-------------------|----------|
-| `nmap_scan` | Network reconnaissance | Medium |
-| `authentication_failure` | Brute force attempt | High |
-| `privilege_escalation` | Sudo usage | Medium |
-| `ssh_login` | Remote access | Low-High |
+Build alerts for common attack patterns:
+- 🔍 Network scanning detection
+- 🔐 Multiple authentication failures
+- ⚡ Privilege escalation attempts
+- 🌐 Unusual SSH connections
 
 ---
 
